@@ -1,10 +1,29 @@
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+import joblib
 import streamlit as st
 import numpy as np
-import joblib
 
-# Load the model once at the start
-model = joblib.load(open("water.pkl", "rb"))
+# Step 1: Load the dataset
+# Replace this with the path to your actual dataset
+data = pd.read_csv("water_quality.csv")
 
+# Step 2: Prepare the data
+X = data.drop("Potability", axis=1)  # Assuming 'Potability' is the target column
+y = data["Potability"]
+
+# Step 3: Split the dataset into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Step 4: Train the Random Forest model
+model = RandomForestClassifier(random_state=42)
+model.fit(X_train, y_train)
+
+# Step 5: Save the model
+joblib.dump(model, "mymodel_iiit.pkl")
+
+# Step 6: Start the Streamlit app
 st.title("Water Potability Prediction")
 st.markdown("This model predicts the quality of water based on various parameters.")
 
@@ -28,11 +47,14 @@ with col2:
 # Prepare input data for prediction
 input_data = np.array([[pp, Hd, So, Ch, Su, Co, Oc, Tr, Tu, ii]])
 
+# Load the model for predictions
+model = joblib.load("mymodel_iiit.pkl")
+
 # Prediction button
 if st.button("Predict Potability"):
     try:
         # Make prediction using the model
-        prediction = model.predict(input_data)  # Ensure this is the model object
+        prediction = model.predict(input_data)
 
         # Display prediction result
         if prediction[0] == 1:
