@@ -31,18 +31,18 @@ st.header("Input Parameters")
 col1, col2 = st.columns(2)
 
 with col1:
-    pp = st.slider("pH Value", 1.0, 14.0, 7.0)  # Default to neutral pH
-    Hd = st.slider("Hardness Value", 65.0, 330.0, 150.0)  # Default value
-    So = st.slider("Solids Value", 600.0, 62000.0, 1000.0)  # Default value
-    Ch = st.slider("Chloramines Value", 0.0, 14.0, 2.0)  # Default value
-    Su = st.text_input("Sulfate Value", value=200.0)  # Default value
+    pp = st.text_input("pH Value", value=7.0)  # Text input for pH
+    Hd = st.selectbox("Hardness Value", [65, 100, 150, 200, 250, 300])  # Select box for Hardness
+    So = st.number_input("Solids Value", min_value=600.0, max_value=62000.0, value=1000.0)  # Number input for Solids
+    Ch = st.radio("Chloramines Value", options=[0.0, 2.0, 5.0, 10.0])  # Radio button for Chloramines
+    Su = st.slider("Sulfate Value", 100.0, 500.0, 200.0)  # Slider for Sulfate
 
 with col2:
-    Co = st.slider("Conductivity Value", 150.0, 800.0, 300.0)  # Default value
-    Oc = st.slider("Organic Carbon Value", 2.0, 30.0, 5.0)  # Default value
-    Tr = st.slider("Trihalomethanes Value", 5.0, 130.0, 10.0)  # Default value
-    Tu = st.slider("Turbidity Value", 1.0, 7.0, 2.0)  # Default value
-    ii = st.slider("ID", 1.0, 3280.0, 1.0)  # Default value
+    Co = st.text_input("Conductivity Value", value=300.0)  # Text input for Conductivity
+    Oc = st.selectbox("Organic Carbon Value", [2, 5, 10, 15, 20, 25, 30])  # Select box for Organic Carbon
+    Tr = st.number_input("Trihalomethanes Value", min_value=5.0, max_value=130.0, value=10.0)  # Number input for Trihalomethanes
+    Tu = st.radio("Turbidity Value", options=[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0])  # Radio button for Turbidity
+    ii = st.slider("ID", 1.0, 3280.0, 1.0)  # Slider for ID
 
 # Prepare input data for prediction
 input_data = np.array([[pp, Hd, So, Ch, Su, Co, Oc, Tr, Tu, ii,1]])
