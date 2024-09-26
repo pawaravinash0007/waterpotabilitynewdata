@@ -5,12 +5,6 @@ import joblib
 # Load the model once at the start
 grid_search = joblib.load(open("water.pkl", "rb"))
 
-def predict(data):
-    grid_search = joblib.load(open("water.pkl", "rb"))
-    return grid_search.predict(data)
-#def predict(data):
-    #return clf.predict(data)
-
 st.title("Water Potability Prediction")
 st.markdown("This model predicts the quality of water.")
 
@@ -32,8 +26,10 @@ with col2:
     ii = st.slider("ID", 1.0, 3280.0, 1.0)  # Default value
 
 if st.button("Predict Survival"):
-    result = grid_search.predict([[pp, Hd, So, Ch, Su,Co,Oc, Tr, Tu, ii]])
-    st.text(result[0])
+    input_data=np.array([[pp, Hd, So, Ch, Su,Co,Oc, Tr, Tu, ii]])
+    prediction = model.predict(input_data)
+    st.write(f"Prediction: {prediction[0]}")
+  
     
 
 
