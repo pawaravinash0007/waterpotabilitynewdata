@@ -32,8 +32,7 @@ with col2:
     ii = st.slider("ID", 1.0, 3280.0, 1.0)  # Default value
 
 if st.button("Predict Survival"):
-    result = grid_search.predict(
-        np.array([pp, Hd, So, Ch, Su,Co,Oc, Tr, Tu, ii]))
+    result = grid_search.predict([pp, Hd, So, Ch, Su,Co,Oc, Tr, Tu, ii])
     st.text(result[0])
     
 
