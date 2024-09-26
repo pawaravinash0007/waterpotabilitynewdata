@@ -1,12 +1,12 @@
 import streamlit as st
 import numpy as np
-import pandas as pd
 import joblib
+
 # Load the model once at the start
 model = joblib.load(open("water.pkl", "rb"))
 
 st.title("Water Potability Prediction")
-st.markdown("This model predicts the quality of water.")
+st.markdown("This model predicts the quality of water based on various parameters.")
 
 st.header("Input Parameters")
 col1, col2 = st.columns(2)
@@ -25,13 +25,16 @@ with col2:
     Tu = st.slider("Turbidity Value", 1.0, 7.0, 2.0)  # Default value
     ii = st.slider("ID", 1.0, 3280.0, 1.0)  # Default value
 
-input_data=np.array([[pp, Hd, So, Ch, Su,Co,Oc, Tr, Tu, ii]])
-if st.button("Predict Survival"):
-   
+# Prepare input data for prediction
+input_data = np.array([[pp, Hd, So, Ch, Su, Co, Oc, Tr, Tu, ii]])
+
+# Prediction button
+if st.button("Predict Potability"):
+    # Make prediction
     prediction = model.predict(input_data)
-    st.write(f"Prediction: {prediction[0]}")
-  
     
-
-
-st.markdown("Developed at IIIT Surat")
+    # Display prediction result
+    if prediction[0] == 1:
+        st.write("Prediction: The water is **potable**.")
+    else:
+        st.write("Prediction: The water is **not potable**.")
