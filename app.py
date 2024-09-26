@@ -1,18 +1,19 @@
 import streamlit as st
-import pandas as pd
 import numpy as np
 import pickle
 
 # Load the model once at the start
-with open("water.pkl", "rb") as model_file:
-    avinash = pickle.load(model_file)
+model_file = "water.pkl"
 
-#def predict(data):
-    #return clf.predict(data)
+# Check if the model file exists and load it
+with open(model_file, "rb") as f:
+    clf = pickle.load(f)
 
+# Streamlit app title and description
 st.title("Water Potability Prediction")
 st.markdown("This model predicts the quality of water.")
 
+# Input parameters section
 st.header("Input Parameters")
 col1, col2 = st.columns(2)
 
@@ -30,15 +31,22 @@ with col2:
     Tu = st.slider("Turbidity Value", 1.0, 7.0, 2.0)  # Default value
     ii = st.slider("ID", 1.0, 3280.0, 1.0)  # Default value
 
+# Prediction logic
 if st.button("Predict Potability"):
     # Prepare input data for prediction
     input_data = np.array([[pp, Hd, So, Ch, Co, Oc, Tr, Tu, ii]])
-    result = avinash.predict(input_data)
 
-    # Display the result
-    if result[0] == 1:
-        st.success("The water is predicted to be potable.")
+    # Ensure the model is a valid estimator
+    if hasattr(clf, 'predict'):
+        result = clf.predict(input_data)
+
+        # Display the result
+        if result[0] == 1:
+            st.success("The water is predicted to be potable.")
+        else:
+            st.error("The water is predicted not to be potable.")
     else:
-        st.error("The water is predicted not to be potable.")
+        st.error("Model is not a valid estimator.")
 
+# Footer
 st.markdown("Developed at IIIT Surat")
