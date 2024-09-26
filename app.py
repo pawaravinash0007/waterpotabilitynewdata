@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import joblib
 # Load the model once at the start
-grid_search = joblib.load(open("water.pkl", "rb"))
+model = joblib.load(open("water.pkl", "rb"))
 
 st.title("Water Potability Prediction")
 st.markdown("This model predicts the quality of water.")
