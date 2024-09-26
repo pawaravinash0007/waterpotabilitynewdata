@@ -33,7 +33,7 @@ with col2:
 
 if st.button("Predict Survival"):
     result = grid_search.predict(
-        np.array([[pp, Hd, So, Ch, Su,Co,Oc, Tr, Tu, ii]]))
+        np.array([pp, Hd, So, Ch, Su,Co,Oc, Tr, Tu, ii]))
     st.text(result[0])
     
 
