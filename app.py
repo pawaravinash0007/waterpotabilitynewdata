@@ -55,7 +55,7 @@ if st.button("Predict Potability"):
     try:
         # Make prediction using the model
         prediction = model.predict(input_data)
-        st.write(prediction)
+        st.write(prediction[0])
         # Display prediction result
         if prediction[0] == 1:
             st.write("Prediction: The water is **potable**.")
