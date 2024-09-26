@@ -32,6 +32,6 @@ st.text('')
 if st.button("Seles Prediction "):
 	result = clf.predict(     
 	    np.array([[p1,Hd,So,Ch,Co,Oc,Tr,Tu,i1]]))
-    st.text(result[0])
+	st.text(result[0])
 
 st.markdown("Work at IIIT Surat")
