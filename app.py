@@ -45,7 +45,7 @@ with col2:
     ii = st.slider("ID", 1.0, 3280.0, 1.0)  # Default value
 
 # Prepare input data for prediction
-input_data = np.array([[pp, Hd, So, Ch, Su, Co, Oc, Tr, Tu, ii]])
+input_data = np.array([[pp, Hd, So, Ch, Su, Co, Oc, Tr, Tu, ii,1]])
 
 # Load the model for predictions
 model = joblib.load("mymodel_iiit.pkl")
