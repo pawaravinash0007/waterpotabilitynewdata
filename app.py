@@ -35,7 +35,7 @@ with col1:
     Hd = st.slider("Hardness Value", 65.0, 330.0, 150.0)  # Default value
     So = st.slider("Solids Value", 600.0, 62000.0, 1000.0)  # Default value
     Ch = st.slider("Chloramines Value", 0.0, 14.0, 2.0)  # Default value
-    Su = st.slider("Sulfate Value", 100.0, 500.0, 200.0)  # Default value
+    Su = st.text_input("Sulfate Value", 100.0, 500.0, 200.0)  # Default value
 
 with col2:
     Co = st.slider("Conductivity Value", 150.0, 800.0, 300.0)  # Default value
