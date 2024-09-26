@@ -22,6 +22,7 @@ with col1:
 	So = st.slider("Solids Value", 600.0,62000.0,0.5)
 	Ch = st.slider("Chloramines Value", 0.0, 14.0, 0.5)
 	Su = st.slider("Sulfate Value", 100.0, 500.0, 0.5)
+with col2:
 	Co = st.slider("Conductivity Value", 150.0,800.0,0.5)
 	Oc = st.slider("Organic Carbon Value", 2.0, 30.0, 0.5)
 	Tr = st.slider("Trihalomethanes Value", 5.0, 130.0, 0.5)
