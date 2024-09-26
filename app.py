@@ -3,7 +3,7 @@ import numpy as np
 import joblib
 
 # Load the model once at the start
-model = joblib.load(open("water.pkl", "rb"))
+model = joblib.load(open("water111.pkl", "rb"))
 
 st.title("Water Potability Prediction")
 st.markdown("This model predicts the quality of water based on various parameters.")
@@ -31,7 +31,7 @@ input_data = np.array([[pp, Hd, So, Ch, Su, Co, Oc, Tr, Tu, ii]])
 # Prediction button
 if st.button("Predict Potability"):
     # Make prediction
-    prediction = joblib.load(open("water.pkl", "rb")).predict(input_data)
+    prediction = model.predict(input_data)
     
     # Display prediction result
     if prediction[0] == 1:
