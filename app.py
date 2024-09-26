@@ -7,7 +7,7 @@ import numpy as np
 
 # Step 1: Load the dataset
 # Replace this with the path to your actual dataset
-data = pd.read_csv("water_quality.csv")
+data = pd.read_csv("ready.csv")
 
 # Step 2: Prepare the data
 X = data.drop("Potability", axis=1)  # Assuming 'Potability' is the target column
