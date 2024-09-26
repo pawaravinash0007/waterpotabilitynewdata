@@ -3,8 +3,7 @@ import pandas as pd
 import numpy as np
 import pickle
 
-# Load the model
-clf = pickle.load(open("water.pkl","rb"))
+
 
 def predict(data):
     clf = pickle.load(open("water.pkl","rb"))
