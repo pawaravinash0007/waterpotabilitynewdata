@@ -52,14 +52,9 @@ model = joblib.load("mymodel_iiit.pkl")
 
 # Prediction button
 if st.button("Predict Potability"):
-    try:
-        # Make prediction using the model
-        prediction = model.predict(input_data)
-
-        # Display prediction result
-        if prediction[0] == 1:
-            st.write("Prediction: The water is **potable**.")
-        else:
-            st.write("Prediction: The water is **not potable**.")
-    except Exception as e:
-        st.error(f"Error: {e}")
+    prediction = model.predict(input_data)
+    st.text(prediction[0])
+    st.write("Prediction: The water is **potable**.")
+else:
+    st.write("Prediction: The water is **not potable**.")
+  
