@@ -30,7 +30,8 @@ with col2:
 	i1 = st.slider("id", 1.0, 3280.0, 0.5)
 st.text('')
 if st.button("Seles Prediction "):
-    result = clf.predict(np.array([[p1,Hd,So,Ch,Co,Oc,Tr,Tu,i1]]))
+    result = clf.predict(
+	    np.array([[p1,Hd,So,Ch,Co,Oc,Tr,Tu,i1]]))
     st.text(result[0])
 
 st.markdown("Work at IIIT Surat")
