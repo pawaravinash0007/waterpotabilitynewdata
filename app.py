@@ -17,7 +17,7 @@ y = data["Potability"]
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # Step 4: Train the Random Forest model
-model = RandomForestClassifier(min_sample_split=100,min_sample_leaf=4,min_depth=3,n_estimators=100)
+model = RandomForestClassifier(min_samples_split=100,min_samples_leaf=4,min_depth=3,n_estimators=100)
 model.fit(X_train, y_train)
 
 # Step 5: Save the model
