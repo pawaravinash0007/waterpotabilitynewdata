@@ -40,4 +40,4 @@ if st.button("Predict Potability"):
     else:
         st.error("The water is predicted not to be potable.")
 
-st.markdown("Developed
+st.markdown("Developed at IIIT Surat")
