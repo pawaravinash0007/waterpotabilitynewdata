@@ -33,7 +33,7 @@ with col2:
 if st.button("Predict Potability"):
     # Prepare input data for prediction
     #input_data = np.array([pp, Hd, So, Ch, Co, Oc, Tr, Tu, ii])
-    result = clf.predict([[pp, Hd, So, Ch, Co, Oc, Tr, Tu, ii]])
+    result = clf.predict(np.array[pp, Hd, So, Ch, Co, Oc, Tr, Tu, ii])
 
     # Display the result
     if result[0] == 1:
