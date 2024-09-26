@@ -5,7 +5,7 @@ import pickle
 
 # Load the model once at the start
 with open("water.pkl", "rb") as model_file:
-    clf = pickle.load(model_file)
+    avinash = pickle.load(model_file)
 
 #def predict(data):
     #return clf.predict(data)
@@ -33,7 +33,7 @@ with col2:
 if st.button("Predict Potability"):
     # Prepare input data for prediction
     input_data = np.array([[pp, Hd, So, Ch, Co, Oc, Tr, Tu, ii]])
-    result = clf.predict(input_data)
+    result = avinash.predict(input_data)
 
     # Display the result
     if result[0] == 1:
